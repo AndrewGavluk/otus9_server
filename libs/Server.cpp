@@ -11,7 +11,7 @@ Server::~Server(){}
 void Server::handle_accept(){
     auto acceptProcessor = [this](const boost::system::error_code& ec) {
         if(!ec) {
-            std::make_shared<ClientSession>(m_bulk_size, std::move(m_sock))->start();
+            std::make_shared<ClientSession>(m_assync, m_bulk_size, std::move(m_sock))->start();
         }
         handle_accept();
     };

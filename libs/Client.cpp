@@ -1,7 +1,7 @@
 #include "Client.h"
 
-ClientSession::ClientSession(size_t bulk_size, ip::tcp::socket sock) : 
-    m_bulk_size{bulk_size}, m_sock{std::move(sock)}{}
+ClientSession::ClientSession(assyncLib& _assync, size_t bulk_size, ip::tcp::socket sock) : 
+    m_assync{_assync}, m_bulk_size{bulk_size}, m_sock{std::move(sock)}{}
 
 void ClientSession::start()
 {
