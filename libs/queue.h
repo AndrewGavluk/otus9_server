@@ -18,6 +18,9 @@ class queueLists
         void push(std::shared_ptr<T> line);
         bool pop(std::shared_ptr<T>& );
         void setEOF();
+        size_t size () {
+            std::unique_lock<std::mutex> lock(m_mutex);
+            return m_deque.size();}
     private:
         std::deque<std::shared_ptr<T>> m_deque;
         std::mutex m_mutex; 

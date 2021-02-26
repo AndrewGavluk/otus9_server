@@ -34,7 +34,7 @@ void interpreter::processStream()
     std::string input;
     std::time_t time=0;
 
-    std::this_thread::sleep_for (std::chrono::microseconds(100));
+    std::this_thread::sleep_for (std::chrono::microseconds(10));
 
     while(!m_sstrm.eof() && std::getline(m_sstrm, input)){
         if ( input=="{" && level++ ) continue;
@@ -43,16 +43,17 @@ void interpreter::processStream()
         
         if (input=="}" || input=="{")
             print(time);
-        
         else{
-            m_block.push_back(input); 
+            m_block.push_back(input);
+
             if(m_block.size() >= m_bulkSize && !level )
                 print(time);
         }  
     }
-
+    
     auto bulkPrintEOF = [](std::shared_ptr<Printer> outs){outs->setEOF();};
     std::for_each(m_outputs.begin(), m_outputs.end(), bulkPrintEOF);
+
 }
 
 void interpreter::putString(std::string buf)

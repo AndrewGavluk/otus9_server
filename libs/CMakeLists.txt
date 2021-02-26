@@ -25,6 +25,11 @@ target_link_libraries(libasync PRIVATE libinterpret filePrinter consolePrinter p
 set_target_properties(libasync  PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
 target_include_directories(libasync PRIVATE ${CMAKE_BINARY_DIR})
 
+add_library(clientServer STATIC Client.cpp Client.h Server.cpp Server.h)
+target_link_libraries(clientServer PRIVATE libasync) 
+set_target_properties(clientServer  PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+target_include_directories(clientServer PRIVATE ${CMAKE_BINARY_DIR})
+
 if(MSVC)
 	target_compile_options(printer PRIVATE /W4)
 	target_compile_options(filePrinter PRIVATE /W4)

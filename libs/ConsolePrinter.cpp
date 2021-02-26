@@ -14,17 +14,17 @@ ConsolePrinter::~ConsolePrinter()
 }
 
 void ConsolePrinter::printThread(size_t threadNumber) {
-    
     (void)(threadNumber);
     std::shared_ptr<Bulk> data;
     std::string separator;
-
     while(m_queue.pop(data)){
         separator = "";
         std::cout << "bulk: ";
         for (auto &str : data->bulk){
-            std::cout << separator << str << std::endl;
+            std::cout << separator << str;
             separator = ",";
         }
+        std::cout << std::endl;
     }
+    
 }
