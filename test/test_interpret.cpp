@@ -77,12 +77,6 @@ TEST(gtest_interpret_test1, test_file_brackets2){
 	testInputOutput(input, output);
 }
 
-TEST(gtest_interpret_test1, test_file_brackets3){
-	std::vector<std::string>  input {"cmd1", "cmd2", "{", "cmd3", "cmd4", "}"};
-	std::vector<std::string>  output {"bulk: cmd1", ",cmd2", "bulk: cmd3", ",cmd4"};
-	testInputOutput(input, output);
-}
-
 
 int main (int argc, char** argv) {
 	testing::InitGoogleTest(&argc, argv);

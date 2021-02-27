@@ -1,11 +1,11 @@
 #include "Client.h"
 
 ClientSession::ClientSession(assyncLib& _assync, size_t bulk_size, ip::tcp::socket sock) : 
-    m_assync{_assync}, m_bulk_size{bulk_size}, m_sock{std::move(sock)}{}
+    m_assync{_assync}, m_bulkSize{bulk_size}, m_sock{std::move(sock)}{}
 
 void ClientSession::start()
 {
-    m_handle = m_assync.connect(m_bulk_size);
+    m_handle = m_assync.connect(m_bulkSize);
     m_self = shared_from_this();
     handle_read();
 }

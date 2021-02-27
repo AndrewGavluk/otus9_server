@@ -22,5 +22,5 @@ private:
     io_service        m_service{};
     ip::tcp::acceptor m_acceptor;
     ip::tcp::socket   m_sock;
-    size_t            m_bulk_size;   
+    size_t            m_bulkSize;   
 };

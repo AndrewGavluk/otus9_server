@@ -1,0 +1,2 @@
+#!/bin/bash
+seq 0 5 | nc localhost 9000 & seq 20 25 | nc localhost 9000 &

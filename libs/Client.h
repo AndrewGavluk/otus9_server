@@ -22,6 +22,6 @@ class ClientSession : public std::enable_shared_from_this<ClientSession> {
         ip::tcp::socket             m_sock;
         uint64_t                    m_handle{};
         std::shared_ptr<ClientSession>     m_self;
-        size_t                      m_bulk_size;
+        size_t                      m_bulkSize;
         
 };
